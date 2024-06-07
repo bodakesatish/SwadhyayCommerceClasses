@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Swadhyay Commerce Classes"
 include(":app")
+include(":data")
+include(":domain")
