@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Swadhyay Commerce Classes</string>
+    <string name="tv_username">Username</string>
+    <string name="tv_password">Password</string>
+    <string name="ev_username_hint">Username or Email</string>
+    <string name="ev_password_hint">Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_courses">Courses</string>
+    <string name="tv_batches">Batches</string>
+    <string name="tv_teachers">Teachers</string>
+    <string name="tv_students">Students</string>
+    <string name="tv_exams">Exams</string>
+    <string name="tv_fees">Fees</string>
+    <string name="tv_attendance">Attendance</string>
+    <string name="btn_new_course">New Course</string>
+    <string name="btn_add_batch">Add Batch</string>
+    <string name="btn_add_teacher">Add Teacher</string>
+    <string name="btn_add_student">Add Student</string>
+    <string name="default_web_client_id">721898953378-rh92gj4j8oqq25hlae46ljheqpl3oc1u.apps.googleusercontent.com</string>
+    <string name="ev_course_name_helper_text">e.g. 11th Commerce</string>
+    <string name="ev_course_name_placeholder_text">Please enter course name</string>
+    <string name="btn_add_subject">Add Subject</string>
 </resources>

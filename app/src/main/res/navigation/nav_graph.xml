@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/login_dest">
+
+    <fragment
+        android:id="@+id/login_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.login.LoginFragment"
+        tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/admin_dashboard_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.admin.AdminDashboardFragment"
+        tools:layout="@layout/fragment_admin_dashboard" />
+
+    <fragment
+        android:id="@+id/batch_list_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.batch.BatchListFragment"
+        tools:layout="@layout/fragment_batch_list" />
+
+    <fragment
+        android:id="@+id/add_batch_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.batch.AddBatchFragment"
+        tools:layout="@layout/fragment_add_batch" />
+
+    <fragment
+        android:id="@+id/course_list_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.course.CourseListFragment"
+        tools:layout="@layout/fragment_course_list" />
+
+    <fragment
+        android:id="@+id/subject_list_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.subject.SubjectFragment"
+        tools:layout="@layout/fragment_subject" />
+
+    <fragment
+        android:id="@+id/add_course_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.course.AddCourseFragment"
+        tools:layout="@layout/fragment_add_course" />
+
+    <fragment
+        android:id="@+id/exam_list_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.exam.ExamListFragment"
+        tools:layout="@layout/fragment_exam_list" />
+
+    <fragment
+        android:id="@+id/add_exam_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.exam.AddExamFragment"
+        tools:layout="@layout/fragment_add_exam" />
+
+    <fragment
+        android:id="@+id/result_list_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.result.ResultFragment"
+        tools:layout="@layout/fragment_result" />
+
+    <fragment
+        android:id="@+id/add_student_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.student.AddStudentFragment"
+        tools:layout="@layout/fragment_add_student" />
+
+    <fragment
+        android:id="@+id/student_list_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.student.StudentListFragment"
+        tools:layout="@layout/fragment_student_list" />
+
+    <fragment
+        android:id="@+id/student_attendance_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.student.StudentAttendanceFragment"
+        tools:layout="@layout/fragment_student_attendance" />
+
+    <fragment
+        android:id="@+id/add_teacher_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.teacher.AddTeacherFragment"
+        tools:layout="@layout/fragment_add_teacher" />
+
+    <fragment
+        android:id="@+id/teacher_list_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.teacher.TeacherListFragment"
+        tools:layout="@layout/fragment_teacher_list" />
+
+    <fragment
+        android:id="@+id/teacher_attendance_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.teacher.TeacherAttendanceFragment"
+        tools:layout="@layout/fragment_teacher_attendance" />
+
+    <fragment
+        android:id="@+id/fees_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.fees.FeesFragment"
+        tools:layout="@layout/fragment_fees" />
+
+</navigation>

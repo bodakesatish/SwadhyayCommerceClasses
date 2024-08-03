@@ -5,9 +5,9 @@ import com.bodakesatish.swadhyaycommerceclasses.data.mapper.AuthenticationEntity
 import com.bodakesatish.swadhyaycommerceclasses.data.source.DataSource
 import com.bodakesatish.swadhyaycommerceclasses.data.source.base.BaseOutput
 import com.bodakesatish.swadhyaycommerceclasses.data.source.base.ResponseCode
-import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.AuthDao
-import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.AuthToken
-import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.SocialMediaSignInUseCase
+import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.LoginDao
+import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.UserResponseModel
+import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.LoginUseCase
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -15,20 +15,20 @@ import javax.inject.Singleton
 class LoginDataSourceLocal
 @Inject
 constructor(
-    private val authDao: AuthDao,
+    private val loginDao: LoginDao,
     private val mapper: AuthenticationEntityLocalMapper
 ) : DataSource.LoginDataSource {
 
-    suspend fun saveAuthToken(data: AuthToken) {
-        Log.i("In AuthenticationDataSourceLocal", "saveAuthToken")
-        authDao.insert(mapper.reverse(data))
-    }
-    override suspend fun signInFromSocialMedia(request: SocialMediaSignInUseCase.Request): BaseOutput<AuthToken> {
-        val data = authDao.getAccessData()
-        return if (data != null && data.id != -1) {
-            BaseOutput.Success(ResponseCode.SUCCESS, mapper.map(data))
+    override suspend fun login(requestModel: LoginUseCase.Request): BaseOutput<UserResponseModel> {
+        val data = loginDao.validateLogin(
+            requestModel.getRequestModel().username,
+            requestModel.getRequestModel().password
+        )
+        return if (data != null) {
+            BaseOutput.Success(ResponseCode.SUCCESS, UserResponseModel())
         } else {
             BaseOutput.Error(ResponseCode.EMPTY)
         }
+
     }
 }

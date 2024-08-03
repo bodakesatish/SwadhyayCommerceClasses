@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_batch_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Batch Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ev_batch_name"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="#ECE6F0"
+        android:singleLine="true"
+        android:textColor="#0C092A"
+        android:textColorHint="#858494"
+        android:textSize="16sp"
+        android:text="Mathematics - 1"
+        android:drawableStart="@drawable/ic_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_batch_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_batch_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Batch Description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ev_batch_name"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ev_batch_description"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="#ECE6F0"
+        android:singleLine="true"
+        android:textColor="#0C092A"
+        android:textColorHint="#858494"
+        android:textSize="16sp"
+        android:text="First Year Commerce Description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_batch_description" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_batch_fee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Batch Fee"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ev_batch_description"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ev_batch_fee"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="#ECE6F0"
+        android:singleLine="true"
+        android:textColor="#0C092A"
+        android:textColorHint="#858494"
+        android:textSize="16sp"
+        android:text="3000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_batch_fee" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_batch_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Batch Duration"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ev_batch_fee" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ev_batch_duration"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="#ECE6F0"
+        android:singleLine="true"
+        android:textColor="#0C092A"
+        android:textColorHint="#858494"
+        android:textSize="16sp"
+        android:text="60"
+        android:drawableStart="@drawable/ic_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_batch_duration" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_batch_start_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Batch Start Date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ev_batch_duration"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ev_batch_start_date"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="#ECE6F0"
+        android:singleLine="true"
+        android:textColor="#0C092A"
+        android:textColorHint="#858494"
+        android:textSize="16sp"
+        android:drawableStart="@drawable/ic_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_batch_start_date" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_batch_end_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Batch End Date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ev_batch_start_date"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ev_batch_end_date"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="#ECE6F0"
+        android:singleLine="true"
+        android:textColor="#0C092A"
+        android:textColorHint="#858494"
+        android:textSize="16sp"
+        android:drawableStart="@drawable/ic_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_batch_end_date" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_batch_max_strength"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Batch Max Strength"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ev_batch_end_date"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ev_batch_max_strength"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="#ECE6F0"
+        android:singleLine="true"
+        android:textColor="#0C092A"
+        android:textColorHint="#858494"
+        android:textSize="16sp"
+        android:text="100"
+        android:drawableStart="@drawable/ic_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_batch_max_strength" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Batch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ev_batch_max_strength"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,14 @@
 package com.bodakesatish.swadhyaycommerceclasses.ui.login
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bodakesatish.swadhyaycommerceclasses.common.CoroutineHelper
-import com.bodakesatish.swadhyaycommerceclasses.common.Resource
+import androidx.lifecycle.viewModelScope
+import com.bodakesatish.swadhyaycommerceclasses.util.Resource
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.request.UserRequestModel
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.ResponseCode
-import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.SocialMediaSignInUseCase
+import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.LoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,35 +16,40 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel  @Inject constructor(
-    private val socialMediaSignInUseCase: SocialMediaSignInUseCase
+    private val socialMediaSignInUseCase: LoginUseCase
 ) : ViewModel() {
 
-    val singInResponse = MutableLiveData<Resource<Any>>()
-    private val scope = CoroutineHelper().getScope()
+    private val _loginResponse = MutableLiveData<Resource<Any>>()
+    val loginResponse : LiveData<Resource<Any>> = _loginResponse
 
-    fun socialMediaSignIn(userRequestModel: UserRequestModel) {
+    fun login(userName: String, password: String) {
         Log.i("In LoginViewModel","socialMediaSignIn")
-        scope.launch {
-            val requestModel = SocialMediaSignInUseCase.Request()
-            requestModel.setRequestModel(userRequestModel)
+        viewModelScope.launch(Dispatchers.IO) {
+            val requestModel = LoginUseCase.Request()
+            requestModel.setRequestModel(UserRequestModel(userName,password))
             val response = socialMediaSignInUseCase.executeUseCase(requestModel)
-            scope.launch(Dispatchers.Main) {
+            viewModelScope.launch(Dispatchers.Main) {
                 when (response.getResponseCode()) {
                     is ResponseCode.Success -> {
-                        singInResponse.postValue(Resource.Success(response.getData()!!))
+                        _loginResponse.value = Resource.Success(response.getData()!!)
                         Log.i("In LoginViewModel","socialMediaSignIn Success")
                     }
                     is ResponseCode.Authentication -> {
-                        singInResponse.postValue(Resource.Error("Please enter valid credentials"))
+                        _loginResponse.postValue(Resource.Error("Please enter valid credentials"))
                         Log.i("In LoginViewModel","socialMediaSignIn Fail")
                     }
                     else -> {
-                        singInResponse.postValue(Resource.Error("Something went wrong.Please try again"))
+                        _loginResponse.postValue(Resource.Error("Something went wrong.Please try again"))
                         Log.i("In LoginViewModel","socialMediaSignIn Else")
                     }
                 }
             }
         }
     }
+
+    fun setLoginResponse(response: Resource<Any>) {
+        _loginResponse.value = response
+    }
+
 
 }

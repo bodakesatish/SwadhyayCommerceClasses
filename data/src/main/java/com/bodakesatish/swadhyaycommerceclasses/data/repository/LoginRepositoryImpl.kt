@@ -6,8 +6,9 @@ import com.bodakesatish.swadhyaycommerceclasses.data.source.base.BaseOutput
 import com.bodakesatish.swadhyaycommerceclasses.data.source.base.ResponseCode
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.datasource.LoginDataSourceLocal
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.AuthToken
+import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.UserResponseModel
 import com.bodakesatish.swadhyaycommerceclasses.domain.repository.LoginRepository
-import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.SocialMediaSignInUseCase
+import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.LoginUseCase
 import javax.inject.Inject
 
 class LoginRepositoryImpl
@@ -16,22 +17,23 @@ constructor(
     private val localDataSource: LoginDataSourceLocal
 ) : LoginRepository
 {
-    override suspend fun signInFromSocialMedia(request: SocialMediaSignInUseCase.Request): SocialMediaSignInUseCase.Response {
-        Log.i("In FMCRepositoryImpl", "signInFromSocialMedia")
-        val output = BaseOutput.Error(ResponseCode.EMPTY)
-        val response = SocialMediaSignInUseCase.Response()
-        val baseOutputMapper = BaseOutputRemoteMapper<AuthToken>()
+    override suspend fun login(request: LoginUseCase.Request): LoginUseCase.Response {
+        Log.i("In LoginRepositoryImpl", "LoginRepository")
+        val output = localDataSource.login(request)
+        val response = LoginUseCase.Response()
+        val baseOutputMapper = BaseOutputRemoteMapper<UserResponseModel>()
         baseOutputMapper.mapBaseOutput(output, response,
             executeOnSuccess = {
-                localDataSource.saveAuthToken(it)
-                val localOutput = localDataSource.signInFromSocialMedia(request)
-                if (localOutput is BaseOutput.Success) {
-                    return@mapBaseOutput localOutput.output!!
+                if (output is BaseOutput.Success) {
+                    Log.i("In LoginRepositoryImpl", "login Success")
+                    return@mapBaseOutput output.output!!
                 } else {
-                    return@mapBaseOutput AuthToken()
+                    Log.i("In LoginRepositoryImpl", "login Not Success")
+                    return@mapBaseOutput UserResponseModel()
                 }
             }, executeOnError = {
-                return@mapBaseOutput AuthToken()
+                Log.i("In LoginRepositoryImpl", "login Error")
+                return@mapBaseOutput UserResponseModel()
             })
         return response
     }

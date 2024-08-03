@@ -1,7 +1,7 @@
 package com.bodakesatish.swadhyaycommerceclasses.domain.repository
 
-import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.SocialMediaSignInUseCase
+import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.LoginUseCase
 
 interface LoginRepository {
-    suspend fun signInFromSocialMedia(request: SocialMediaSignInUseCase.Request) : SocialMediaSignInUseCase.Response
+    suspend fun login(request: LoginUseCase.Request) : LoginUseCase.Response
 }

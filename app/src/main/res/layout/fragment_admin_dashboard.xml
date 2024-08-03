@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8EFEF">
+
+    <include
+        android:id="@+id/header_generic"
+        layout="@layout/header_generic" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_course"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="34dp"
+        app:cardCornerRadius="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/my_ripple_drawable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_generic">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/tv_courses"
+            android:gravity="center"
+            android:textAllCaps="true"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_batch"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="34dp"
+        app:cardCornerRadius="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/my_ripple_drawable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_course">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/tv_batches"
+            android:gravity="center"
+            android:textAllCaps="true"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_teacher"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="34dp"
+        app:cardCornerRadius="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/my_ripple_drawable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_batch">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/tv_teachers"
+            android:gravity="center"
+            android:textAllCaps="true"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_students"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="34dp"
+        app:cardCornerRadius="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/my_ripple_drawable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_teacher">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/tv_students"
+            android:gravity="center"
+            android:textAllCaps="true"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_exams"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="34dp"
+        app:cardCornerRadius="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/my_ripple_drawable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_students">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/tv_exams"
+            android:gravity="center"
+            android:textAllCaps="true"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_fees"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="34dp"
+        app:cardCornerRadius="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/my_ripple_drawable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_exams">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/tv_fees"
+            android:gravity="center"
+            android:textAllCaps="true"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_attendance"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="34dp"
+        app:cardCornerRadius="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/my_ripple_drawable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_fees">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/tv_attendance"
+            android:gravity="center"
+            android:textAllCaps="true"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
