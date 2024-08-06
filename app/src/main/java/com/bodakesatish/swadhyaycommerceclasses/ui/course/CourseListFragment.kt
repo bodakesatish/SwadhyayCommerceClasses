@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.window.OnBackInvokedCallback
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -23,10 +21,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class CourseListFragment : Fragment() {
 
     private var binding: FragmentCourseListBinding? = null
+
     private val viewModel: CourseListViewModel by viewModels()
 
-//    lateinit var onBackPressedCallback: OnBackPressedCallback
-//    lateinit var onBackInvokedCallback: OnBackInvokedCallback
     private var courseAdapter: CourseAdapter = CourseAdapter()
 
     override fun onCreateView(
@@ -44,10 +41,15 @@ class CourseListFragment : Fragment() {
 
         initView()
 
+        initListeners()
 
+        initObservers()
 
         viewModel.getCourseList()
 
+    }
+
+    private fun initObservers() {
         viewModel.courseResponse.observe(viewLifecycleOwner) { response ->
 
             when (response) {
@@ -63,6 +65,13 @@ class CourseListFragment : Fragment() {
             }
 
         }
+    }
+
+    private fun initListeners() {
+
+        binding?.headerGeneric?.btnBack?.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
         binding?.btnNewCourse?.setOnClickListener {
             findNavController().navigate(R.id.add_course_dest)
@@ -70,27 +79,10 @@ class CourseListFragment : Fragment() {
 
         courseAdapter.setOnClickListener { course ->
             val bundle = Bundle()
-            bundle.putInt(Constants.COURSE_ID,course.courseId)
-            findNavController().navigate(R.id.subject_list_dest, bundle)
+            bundle.putInt(Constants.COURSE_ID, course.courseId)
+            val action = CourseListFragmentDirections.actionFragmentCourseListToFragmentSubjectList(course)
+            findNavController().navigate(action)
         }
-
-//        onBackPressedCallback = object : OnBackPressedCallback(true) {
-//            override fun handleOnBackPressed() {
-//                // Handle the back gesture here, e.g., navigate back
-//                findNavController().popBackStack()
-//            }
-//        }
-//
-//        requireActivity().onBackPressedDispatcher.addCallback(
-//            viewLifecycleOwner,
-//            onBackPressedCallback
-//        )
-//
-//        onBackInvokedCallback = OnBackInvokedCallback {
-//            // Handle the back gesture here
-//            findNavController().popBackStack()
-//        }
-
     }
 
     private fun setUpHeader() {
@@ -98,7 +90,8 @@ class CourseListFragment : Fragment() {
     }
 
     private fun initView() {
-        binding?.rvCourseList?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding?.rvCourseList?.layoutManager =
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding?.rvCourseList?.adapter = courseAdapter
         binding?.rvCourseList?.addItemDecoration(
             DividerItemDecoration(
@@ -110,8 +103,6 @@ class CourseListFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-//        onBackInvokedDispatcher.unregisterOnBackInvokedCallback(onBackInvokedCallback)
-//        onBackPressedCallback.remove()
         super.onDestroyView()
         binding = null
     }

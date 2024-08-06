@@ -12,6 +12,8 @@ import com.bodakesatish.swadhyaycommerceclasses.domain.repository.LoginRepositor
 import com.bodakesatish.swadhyaycommerceclasses.domain.repository.StudentRepository
 import com.bodakesatish.swadhyaycommerceclasses.domain.repository.SubjectRepository
 import com.bodakesatish.swadhyaycommerceclasses.domain.repository.TeacherRepository
+import com.bodakesatish.swadhyaycommerceclasses.security.SessionManager
+import com.bodakesatish.swadhyaycommerceclasses.security.SharedPreferencesManagerImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -38,4 +40,7 @@ abstract class AppModule {
 
     @Binds
     internal abstract fun provideSubjectRepository(subjectRepositoryImpl: SubjectRepositoryImpl): SubjectRepository
+
+    @Binds
+    internal abstract fun provideSharedPreferencesManager(sharedPreferencesManagerImpl: SharedPreferencesManagerImpl): SessionManager
 }

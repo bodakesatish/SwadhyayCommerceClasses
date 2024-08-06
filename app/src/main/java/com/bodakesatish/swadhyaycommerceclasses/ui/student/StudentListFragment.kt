@@ -35,6 +35,8 @@ class StudentListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initHeader()
+        initListeners()
         initView()
 
         viewModel.getStudentList()
@@ -58,6 +60,16 @@ class StudentListFragment : Fragment() {
             findNavController().navigate(R.id.add_student_dest)
         }
 
+    }
+
+    private fun initListeners() {
+        binding?.headerGeneric?.btnBack?.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun initHeader() {
+        binding?.headerGeneric?.tvHeader?.text = getString(R.string.student_list)
     }
 
     private fun initView() {

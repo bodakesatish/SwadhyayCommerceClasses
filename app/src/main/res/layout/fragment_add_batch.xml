@@ -1,175 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp">
+    android:fillViewport="true">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_batch_name"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Batch Name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/ev_batch_name"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:backgroundTint="#ECE6F0"
-        android:singleLine="true"
-        android:textColor="#0C092A"
-        android:textColorHint="#858494"
-        android:textSize="16sp"
-        android:text="Mathematics - 1"
-        android:drawableStart="@drawable/ic_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_batch_name" />
+        <include
+            android:id="@+id/header_generic"
+            layout="@layout/header_generic" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_batch_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Batch Description"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ev_batch_name"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ev_courses_list"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="Select Course (*)"
+            app:endIconMode="custom"
+            app:endIconContentDescription="nothing"
+            app:endIconDrawable="@drawable/arrow_down_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_generic">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/ev_batch_description"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:backgroundTint="#ECE6F0"
-        android:singleLine="true"
-        android:textColor="#0C092A"
-        android:textColorHint="#858494"
-        android:textSize="16sp"
-        android:text="First Year Commerce Description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_batch_description" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:longClickable="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ev_subject_list"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="Select Subject (*)"
+            app:endIconMode="custom"
+            app:endIconContentDescription="nothing"
+            app:endIconDrawable="@drawable/arrow_down_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ev_courses_list">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:longClickable="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ev_teacher_list"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="Select Teacher (*)"
+            app:endIconMode="custom"
+            app:endIconContentDescription="nothing"
+            app:endIconDrawable="@drawable/arrow_down_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ev_subject_list">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:longClickable="false" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_batch_fee"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Batch Fee"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ev_batch_description"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ev_batch_start_date"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="Batch Start Date (*)"
+            app:layout_constraintEnd_toStartOf="@+id/ev_batch_end_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ev_teacher_list"
+            app:placeholderText="Select Batch starting time">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/ev_batch_fee"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:backgroundTint="#ECE6F0"
-        android:singleLine="true"
-        android:textColor="#0C092A"
-        android:textColorHint="#858494"
-        android:textSize="16sp"
-        android:text="3000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_batch_fee" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:longClickable="false" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_batch_duration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Batch Duration"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ev_batch_fee" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/ev_batch_duration"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:backgroundTint="#ECE6F0"
-        android:singleLine="true"
-        android:textColor="#0C092A"
-        android:textColorHint="#858494"
-        android:textSize="16sp"
-        android:text="60"
-        android:drawableStart="@drawable/ic_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_batch_duration" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ev_batch_end_date"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="Batch End Date (*)"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ev_batch_start_date"
+            app:layout_constraintTop_toBottomOf="@+id/ev_teacher_list"
+            app:placeholderText="Select batch end date">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_batch_start_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Batch Start Date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ev_batch_duration"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:longClickable="false" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/ev_batch_start_date"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:backgroundTint="#ECE6F0"
-        android:singleLine="true"
-        android:textColor="#0C092A"
-        android:textColorHint="#858494"
-        android:textSize="16sp"
-        android:drawableStart="@drawable/ic_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_batch_start_date" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_batch_end_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Batch End Date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ev_batch_start_date"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ev_batch_start_time"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Batch Start Time(*)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ev_batch_end_time"
+            app:layout_constraintTop_toBottomOf="@+id/ev_batch_start_date"
+            app:placeholderText="Select batch starting time">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/ev_batch_end_date"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:backgroundTint="#ECE6F0"
-        android:singleLine="true"
-        android:textColor="#0C092A"
-        android:textColorHint="#858494"
-        android:textSize="16sp"
-        android:drawableStart="@drawable/ic_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_batch_end_date" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:longClickable="false" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_batch_max_strength"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Batch Max Strength"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ev_batch_end_date"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/ev_batch_max_strength"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:backgroundTint="#ECE6F0"
-        android:singleLine="true"
-        android:textColor="#0C092A"
-        android:textColorHint="#858494"
-        android:textSize="16sp"
-        android:text="100"
-        android:drawableStart="@drawable/ic_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_batch_max_strength" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ev_batch_end_time"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Batch End Time(*)"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ev_batch_start_time"
+            app:layout_constraintTop_toBottomOf="@+id/ev_batch_start_date"
+            app:placeholderText="Select batch ending time">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Batch"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ev_batch_max_strength"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:longClickable="false" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ev_batch_fee"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Batch Fee (*)"
+            app:prefixText="@string/cat_textfield_prefix"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ev_batch_start_time"
+            app:placeholderText="Enter Batch Fee">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:inputType="number"
+                android:maxLines="1"
+                android:text="" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ev_batch_description"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="Batch Description (Optional)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ev_batch_fee"
+            app:placeholderText="Batch Description">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text="First Year Commerce Description" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ev_batch_student_count"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="Current Student Count"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ev_batch_description"
+            app:placeholderText="Batch Description">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:longClickable="false"
+                android:text="50" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:text="Add Batch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ev_batch_student_count" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

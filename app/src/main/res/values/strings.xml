@@ -21,4 +21,15 @@
     <string name="ev_course_name_helper_text">e.g. 11th Commerce</string>
     <string name="ev_course_name_placeholder_text">Please enter course name</string>
     <string name="btn_add_subject">Add Subject</string>
+    <string name="cat_textfield_filled_dense_password_helper_text">helper text</string>
+    <string name="cat_textfield_placeholder_text">placeholder text</string>
+    <string name="cat_textfield_prefix">₹</string>
+    <string name="add_student">Add new student</string>
+    <string name="student_list">Student List</string>
+    <string-array name="cat_list_popup_window_content" translatable="false">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+    </string-array>
 </resources>

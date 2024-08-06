@@ -39,10 +39,27 @@ class BatchListFragment : Fragment() {
 
         courseId = arguments?.getInt(Constants.COURSE_ID, 0) ?: 0
 
+        initHeader()
+
         initView()
 
-        viewModel.getBatchList(courseId)
+        initListeners()
 
+        initObservers()
+
+        initData()
+
+    }
+
+    private fun initHeader() {
+        binding?.headerGeneric?.tvHeader?.text = "List of Batches"
+    }
+
+    private fun initData() {
+        viewModel.getBatchList()
+    }
+
+    private fun initObservers() {
         viewModel.batchResponse.observe(viewLifecycleOwner) { response ->
 
             when (response) {
@@ -57,11 +74,16 @@ class BatchListFragment : Fragment() {
                 }
             }
         }
+    }
 
+    private fun initListeners() {
         binding?.btnNewBatch?.setOnClickListener {
             findNavController().navigate(R.id.add_batch_dest)
         }
 
+        binding?.headerGeneric?.btnBack?.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun initView() {

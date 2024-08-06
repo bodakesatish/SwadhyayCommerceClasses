@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kapt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.androidx.navigation.safeargs)
 }
 
 android {
@@ -72,6 +73,7 @@ dependencies {
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.material)
     implementation(libs.play.services.auth)
+    implementation(libs.androidx.security.crypto.ktx)
     kapt(libs.hilt.compiler)
 
 

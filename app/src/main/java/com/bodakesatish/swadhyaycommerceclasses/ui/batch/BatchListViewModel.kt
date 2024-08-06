@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Batch
+import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.BatchDetail
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.ResponseCode
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.BatchListUseCase
 import com.bodakesatish.swadhyaycommerceclasses.util.Resource
@@ -22,13 +23,12 @@ class BatchListViewModel @Inject constructor(
         Log.i("BatchListViewModel", "BatchListViewModel Init")
     }
 
-    val batchResponse = MutableLiveData<Resource<List<Batch>>>()
+    val batchResponse = MutableLiveData<Resource<List<BatchDetail>>>()
 
-    fun getBatchList(courseId : Int) {
+    fun getBatchList() {
         Log.i("BatchListViewModel", "BatchListViewModel getBatchList")
         viewModelScope.launch(Dispatchers.IO) {
             val request = BatchListUseCase.Request()
-            request.setRequestModel(courseId)
             val response = batchListUseCase.executeUseCase(request)
             viewModelScope.launch(Dispatchers.Main) {
                 when(response.getResponseCode()) {
@@ -42,7 +42,6 @@ class BatchListViewModel @Inject constructor(
                 }
             }
         }
-
     }
 
 

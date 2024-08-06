@@ -1,17 +1,21 @@
 package com.bodakesatish.swadhyaycommerceclasses.domain.model.response
 
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.request.base.BaseResponse
+import java.io.Serializable
 import java.util.Date
+import javax.inject.Inject
 
-data class Batch(
+data class Batch @Inject constructor(
     val batchId: Int,
-    val courseId: Int,
-    val subjectId: Int,
+    var courseId: Int,
+    var subjectId: Int,
+    var teacherId: Int,
     val batchName: String,
-    val batchDescription: String,
+    var batchDescription: String,
     val batchFee: Int,
-    val batchTimeDuration: Int,
-    val batchStartDate: Date,
-    val batchEndDate: Date,
+    var batchStartDate: Date,
+    var batchEndDate: Date,
+    var batchStartTime: Date,
+    var batchEndTime: Date,
     val batchStudentMaxStrength: Int,
-) : BaseResponse
+) : Serializable, BaseResponse

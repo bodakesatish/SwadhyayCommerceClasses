@@ -2,6 +2,7 @@ package com.bodakesatish.swadhyaycommerceclasses.data.source
 
 import com.bodakesatish.swadhyaycommerceclasses.data.source.base.BaseOutput
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Batch
+import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.BatchDetail
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Course
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Student
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Subject
@@ -11,6 +12,7 @@ import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.AddCourseUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.AddStudentUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.AddSubjectUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.AddTeacherUseCase
+import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.FilteredBatchListUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.LoginUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.SubjectListUseCase
 
@@ -33,6 +35,8 @@ class DataSource {
     interface BatchDataSource {
         suspend fun getAllBatches(): BaseOutput<List<Batch>>
         suspend fun addBatch(request: AddBatchUseCase.Request): BaseOutput<Boolean>
+        suspend fun getBatchList(): BaseOutput<List<BatchDetail>>
+        suspend fun getFilteredBatchList(request: FilteredBatchListUseCase.Request): BaseOutput<List<Batch>>
     }
 
     interface TeacherDataSource {

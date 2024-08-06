@@ -3,13 +3,15 @@ package com.bodakesatish.swadhyaycommerceclasses.ui.batch.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bodakesatish.swadhyaycommerceclasses.common.DateHelper
 import com.bodakesatish.swadhyaycommerceclasses.databinding.ListRowBatchBinding
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Batch
+import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.BatchDetail
 
 class BatchAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var itemList: List<Batch> = emptyList()
-    var onBatchSelected: ((Batch) -> Unit)? = null
+    private var itemList: List<BatchDetail> = emptyList()
+    var onBatchSelected: ((BatchDetail) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding =
@@ -28,12 +30,12 @@ class BatchAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    fun setData(data: List<Batch>) {
+    fun setData(data: List<BatchDetail>) {
         itemList = data
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, data.size)
     }
 
-    fun setOnClickListener(onBatchSelected: ((Batch)) -> Unit) {
+    fun setOnClickListener(onBatchSelected: ((BatchDetail)) -> Unit) {
         this.onBatchSelected = onBatchSelected
     }
 
@@ -44,9 +46,12 @@ class BatchAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class BatchViewHolder(val binding: ListRowBatchBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: Batch, position: Int) {
+        fun bind(data: BatchDetail, position: Int) {
 
-            binding.tvBatchName.text = "${data.batchName} $position"
+            binding.tvNumber.text = "${position + 1}."
+            binding.tvBatchName.text = "${data.courseName} - ${data.subjectName}"
+            binding.tvBatchTime.text = "${DateHelper.formatTime(data.batchStartTime)} - ${DateHelper.formatTime(data.batchEndTime)}"
+
             binding.root.setOnClickListener {
                 onBatchSelected?.invoke(data)
             }

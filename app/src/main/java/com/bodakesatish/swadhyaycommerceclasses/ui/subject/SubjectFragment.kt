@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bodakesatish.swadhyaycommerceclasses.common.Constants
 import com.bodakesatish.swadhyaycommerceclasses.databinding.DialogAddSubjectBinding
 import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentSubjectBinding
+import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Course
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Subject
 import com.bodakesatish.swadhyaycommerceclasses.ui.subject.adapter.SubjectAdapter
 import com.bodakesatish.swadhyaycommerceclasses.util.Resource
@@ -26,7 +29,7 @@ class SubjectFragment : Fragment() {
     private val viewModel: SubjectViewModel by viewModels()
 
     private var subjectAdapter: SubjectAdapter = SubjectAdapter()
-    private var courseId: Int = 0
+    lateinit var course : Course
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,12 +43,16 @@ class SubjectFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        courseId = arguments?.getInt(Constants.COURSE_ID, 0) ?: 0
+        val args: SubjectFragmentArgs by navArgs()
+        course = args.course
+        initHeader()
 
-        viewModel.setCourseId(courseId)
+        viewModel.setCourseId(course.courseId)
         initView()
 
-        viewModel.getSubjectList(courseId)
+        initListeners()
+
+        viewModel.getSubjectList(course.courseId)
 
         viewModel.subjectResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -60,10 +67,23 @@ class SubjectFragment : Fragment() {
             }
         }
 
+
+
+    }
+
+    private fun initListeners() {
+
         binding?.btnAddSubject?.setOnClickListener {
             showAddSubjectDialog()
         }
 
+        binding?.headerGeneric?.btnBack?.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun initHeader() {
+        binding?.headerGeneric?.tvHeader?.text = "${this.course.courseName} Subject List"
     }
 
     private fun showAddSubjectDialog() {
@@ -81,7 +101,7 @@ class SubjectFragment : Fragment() {
             val subjectName = dialogBinding.tvSubjectName.editText?.text.toString()
             val subjectFee = dialogBinding.tvSubjectFee.editText?.text.toString()
             if(subjectName.trim().isNotEmpty() && subjectFee.trim().isNotEmpty()) {
-                viewModel.addSubject(Subject(0, courseId, subjectName, subjectFee.toInt()))
+                viewModel.addSubject(Subject(0, course.courseId, subjectName, subjectFee.toInt()))
             } else {
                 Toast.makeText(requireContext(), "Please enter all fields", Toast.LENGTH_SHORT).show()
             }

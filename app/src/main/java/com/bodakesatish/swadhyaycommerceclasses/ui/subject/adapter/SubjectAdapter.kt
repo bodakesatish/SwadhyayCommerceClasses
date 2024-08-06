@@ -46,6 +46,7 @@ class SubjectAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(data: Subject, position: Int) {
 
+            binding.tvNumber.text = "${position+1}."
             binding.tvSubjectName.text = "${data.subjectName} - ${data.subjectFee}"
             binding.root.setOnClickListener {
                 onSubjectSelected?.invoke(data)

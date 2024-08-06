@@ -15,6 +15,18 @@ import java.util.Date
             parentColumns = [CourseEntity.Columns.COURSE_ID],
             childColumns = [BatchEntity.Columns.COURSE_ID],
             onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = SubjectEntity::class,
+            parentColumns = [SubjectEntity.Columns.SUBJECT_ID],
+            childColumns = [BatchEntity.Columns.SUBJECT_ID],
+            onDelete = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = TeacherEntity::class,
+            parentColumns = [TeacherEntity.Columns.TEACHER_ID],
+            childColumns = [BatchEntity.Columns.TEACHER_ID],
+            onDelete = ForeignKey.CASCADE
         )
     ]
 )
@@ -26,18 +38,22 @@ data class BatchEntity(
     val courseId: Int,
     @ColumnInfo(name = Columns.SUBJECT_ID, index = true)
     val subjectId: Int,
+    @ColumnInfo(name = Columns.TEACHER_ID, index = true)
+    val teacherId: Int,
     @ColumnInfo(name = Columns.BATCH_NAME)
     val batchName: String,
     @ColumnInfo(name = Columns.BATCH_DESCRIPTION)
     val batchDescription: String,
     @ColumnInfo(name = Columns.BATCH_FEE)
     val batchFee: Int,
-    @ColumnInfo(name = Columns.BATCH_TIME_DURATION)
-    val batchTimeDuration: Int,
     @ColumnInfo(name = Columns.BATCH_START_DATE)
     val batchStartDate: Date,
     @ColumnInfo(name = Columns.BATCH_END_DATE)
     val batchEndDate: Date,
+    @ColumnInfo(name = Columns.BATCH_START_TIME)
+    val batchStartTime: Date,
+    @ColumnInfo(name = Columns.BATCH_END_TIME)
+    val batchEndTime: Date,
     @ColumnInfo(name = Columns.BATCH_STUDENT_MAX_STRENGTH)
     val batchStudentMaxStrength: Int,
 ) : BaseEntity() {
@@ -56,6 +72,8 @@ data class BatchEntity(
 
         internal const val SUBJECT_ID = "subjectId"
 
+        internal const val TEACHER_ID = "teacherId"
+
         internal const val BATCH_NAME = "batchName"
 
         internal const val BATCH_DESCRIPTION = "batchDescription"
@@ -67,6 +85,10 @@ data class BatchEntity(
         internal const val BATCH_START_DATE = "batchStartDate"
 
         internal const val BATCH_END_DATE = "batchEndDate"
+
+        internal const val BATCH_START_TIME = "batchStartTime"
+
+        internal const val BATCH_END_TIME = "batchEndTime"
 
         internal const val BATCH_STUDENT_MAX_STRENGTH = "batchStudentMaxStrength"
 

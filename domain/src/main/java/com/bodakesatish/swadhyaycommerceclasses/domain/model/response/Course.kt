@@ -1,6 +1,7 @@
 package com.bodakesatish.swadhyaycommerceclasses.domain.model.response
 
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.request.base.BaseResponse
+import java.io.Serializable
 import java.util.Date
 import javax.inject.Inject
 
@@ -12,4 +13,4 @@ data class Course @Inject constructor(
     val courseDescription: String,
     var courseStartDate: Date,
     var courseEndDate: Date
-) : BaseResponse
+) : Serializable, BaseResponse

@@ -5,7 +5,7 @@ import java.util.Date
 
 data class Student(
     val studentId: Int,
-    val courseId: Int,
+    var courseId: Int,
     val studentFirstName: String,
     val studentMiddleName: String,
     val studentLastName: String,

@@ -32,7 +32,7 @@ class CourseAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun setData(data: List<Course>) {
         itemList = data
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, itemList.size)
     }
 
     fun setOnClickListener(onCourseSelected: ((Course)) -> Unit) {
@@ -43,7 +43,8 @@ class CourseAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(data: Course, position: Int) {
 
-            binding.tvCourseName.text = "${data.courseName} $position"
+            binding.tvNumber.text = "${position+1}."
+            binding.tvCourseName.text = "${data.courseName}"
             binding.root.setOnClickListener{
                 onCourseSelected?.invoke(data)
             }

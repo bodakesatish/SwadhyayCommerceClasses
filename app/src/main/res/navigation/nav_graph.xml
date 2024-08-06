@@ -28,12 +28,22 @@
     <fragment
         android:id="@+id/course_list_dest"
         android:name="com.bodakesatish.swadhyaycommerceclasses.ui.course.CourseListFragment"
-        tools:layout="@layout/fragment_course_list" />
+        tools:layout="@layout/fragment_course_list" >
+
+        <action
+            android:id="@+id/action_fragment_course_list_to_fragment_subject_list"
+            app:destination="@+id/subject_list_dest"/>
+
+    </fragment>
 
     <fragment
         android:id="@+id/subject_list_dest"
         android:name="com.bodakesatish.swadhyaycommerceclasses.ui.subject.SubjectFragment"
-        tools:layout="@layout/fragment_subject" />
+        tools:layout="@layout/fragment_subject" >
+        <argument
+            android:name="course"
+            app:argType="com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Course" />
+    </fragment>
 
     <fragment
         android:id="@+id/add_course_dest"
