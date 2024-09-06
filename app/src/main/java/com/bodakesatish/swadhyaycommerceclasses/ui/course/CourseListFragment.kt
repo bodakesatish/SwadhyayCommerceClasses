@@ -45,8 +45,12 @@ class CourseListFragment : Fragment() {
 
         initObservers()
 
-        viewModel.getCourseList()
+        fetchCourseList()
 
+    }
+
+    private fun fetchCourseList() {
+        viewModel.getCourseList()
     }
 
     private fun initObservers() {
@@ -78,8 +82,6 @@ class CourseListFragment : Fragment() {
         }
 
         courseAdapter.setOnClickListener { course ->
-            val bundle = Bundle()
-            bundle.putInt(Constants.COURSE_ID, course.courseId)
             val action = CourseListFragmentDirections.actionFragmentCourseListToFragmentSubjectList(course)
             findNavController().navigate(action)
         }

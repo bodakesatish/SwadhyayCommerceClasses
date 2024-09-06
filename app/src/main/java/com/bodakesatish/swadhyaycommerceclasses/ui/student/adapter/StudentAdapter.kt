@@ -45,6 +45,9 @@ class StudentAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(data: Student, position: Int) {
             binding.tvStudentName.text = "${data.studentFirstName} $position"
+            binding.root.setOnClickListener {
+                onStudentSelected?.invoke(data)
+            }
         }
 
     }

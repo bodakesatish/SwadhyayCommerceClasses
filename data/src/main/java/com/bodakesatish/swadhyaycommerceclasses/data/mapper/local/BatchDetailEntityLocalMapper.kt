@@ -19,13 +19,13 @@ class BatchDetailEntityLocalMapper
             subjectName = entity.subjectName,
             teacherId = entity.teacherId,
             teacherName = entity.teacherName,
-            batchDescription = entity.batchDescription,
+            batchTitle = entity.batchTitle,
             batchFee = entity.batchFee,
             batchStartDate = entity.batchStartDate,
             batchEndDate = entity.batchEndDate,
             batchStartTime = entity.batchStartTime,
             batchEndTime = entity.batchEndTime,
-            batchStudentMaxStrength = entity.batchStudentMaxStrength
+//            batchStudentMaxStrength = entity.batchStudentMaxStrength
         )
     }
 
@@ -38,13 +38,13 @@ class BatchDetailEntityLocalMapper
             subjectName = model.subjectName,
             teacherId = model.teacherId,
             teacherName = model.teacherName,
-            batchDescription = model.batchDescription,
+            batchTitle = model.batchTitle,
             batchFee = model.batchFee,
             batchStartDate = model.batchStartDate,
             batchEndDate = model.batchEndDate,
             batchStartTime = model.batchStartTime,
             batchEndTime = model.batchEndTime,
-            batchStudentMaxStrength = model.batchStudentMaxStrength
+//            batchStudentMaxStrength = model.batchStudentMaxStrength
         )
 
     }

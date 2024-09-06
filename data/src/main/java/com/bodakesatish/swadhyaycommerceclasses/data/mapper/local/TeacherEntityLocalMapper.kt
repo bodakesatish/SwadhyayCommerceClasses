@@ -16,16 +16,16 @@ class TeacherEntityLocalMapper
             teacherFirstName = entity.teacherFirstName,
             teacherMiddleName = entity.teacherMiddleName,
             teacherLastName = entity.teacherLastName,
-            teacherDesignation = entity.teacherDesignation,
-            teacherQualification = entity.teacherQualification,
-            teacherDoB = entity.teacherDoB,
-            teacherExperience = entity.teacherExperience,
-            teacherGender = entity.teacherGender,
-            teacherDateOfJoining = entity.teacherDateOfJoining,
-            teacherPhoneNumber = entity.teacherPhoneNumber,
-            teacherEmail = entity.teacherEmail,
-            teacherSalary = entity.teacherSalary,
-            teacherStatus = entity.teacherStatus
+//            teacherDesignation = entity.teacherDesignation,
+//            teacherQualification = entity.teacherQualification,
+//            teacherDoB = entity.teacherDoB,
+//            teacherExperience = entity.teacherExperience,
+//            teacherGender = entity.teacherGender,
+//            teacherDateOfJoining = entity.teacherDateOfJoining,
+//            teacherPhoneNumber = entity.teacherPhoneNumber,
+//            teacherEmail = entity.teacherEmail,
+//            teacherSalary = entity.teacherSalary,
+//            teacherStatus = entity.teacherStatus
         )
     }
 
@@ -35,16 +35,16 @@ class TeacherEntityLocalMapper
             teacherFirstName = model.teacherFirstName,
             teacherMiddleName = model.teacherMiddleName,
             teacherLastName = model.teacherLastName,
-            teacherEmail = model.teacherEmail,
-            teacherDesignation = model.teacherDesignation,
-            teacherQualification = model.teacherQualification,
-            teacherDoB = model.teacherDoB,
-            teacherExperience = model.teacherExperience,
-            teacherGender = model.teacherGender,
-            teacherDateOfJoining = model.teacherDateOfJoining,
-            teacherPhoneNumber = model.teacherPhoneNumber,
-            teacherSalary = model.teacherSalary,
-            teacherStatus = model.teacherStatus
+//            teacherEmail = model.teacherEmail,
+//            teacherDesignation = model.teacherDesignation,
+//            teacherQualification = model.teacherQualification,
+//            teacherDoB = model.teacherDoB,
+//            teacherExperience = model.teacherExperience,
+//            teacherGender = model.teacherGender,
+//            teacherDateOfJoining = model.teacherDateOfJoining,
+//            teacherPhoneNumber = model.teacherPhoneNumber,
+//            teacherSalary = model.teacherSalary,
+//            teacherStatus = model.teacherStatus
         )
     }
 }

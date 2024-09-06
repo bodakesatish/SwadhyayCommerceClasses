@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.BatchDao
+import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.BatchTimeTableDao
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.CourseDao
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.ExamDao
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.LoginDao
@@ -124,6 +125,13 @@ class RoomModule {
     @Provides
     fun providesSubjectDao(database: SccDatabase): SubjectDao {
         return database.subjectDao()
+    }
+
+    @Singleton
+    @Provides
+    fun providesBatchTimeTableDao(database: SccDatabase): BatchTimeTableDao {
+        return database.batchTimeTableDao()
+
     }
 
 }

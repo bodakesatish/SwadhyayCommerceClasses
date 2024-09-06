@@ -29,25 +29,25 @@ data class StudentEntity(
     @ColumnInfo(name = Columns.STUDENT_MIDDLE_NAME)
     val studentMiddleName: String,
     @ColumnInfo(name = Columns.STUDENT_LAST_NAME)
-    val studentLastName: String,
-    @ColumnInfo(name = Columns.STUDENT_DOB)
-    val studentDoB: Date,
-    @ColumnInfo(name = Columns.STUDENT_GENDER)
-    val studentGender: String,
-    @ColumnInfo(name = Columns.STUDENT_ADDRESS)
-    val studentAddress: String,
-    @ColumnInfo(name = Columns.STUDENT_PHONE_NUMBER)
-    val studentPhoneNumber: String,
-    @ColumnInfo(name = Columns.STUDENT_EMAIL)
-    val studentEmail: String,
-    @ColumnInfo(name = Columns.STUDENT_PARENT_NAME)
-    val studentParentName: String,
-    @ColumnInfo(name = Columns.STUDENT_PARENT_PHONE_NUMBER)
-    val studentParentPhoneNumber: String,
-    @ColumnInfo(name = Columns.STUDENT_ADMISSION_DATE)
-    val studentAdmissionDate: Date, // Consider using Date or Long for date storage
-    @ColumnInfo(name = Columns.STUDENT_IS_ACTIVE)
-    val studentIsActive: Boolean //true, false
+    val studentLastName: String
+//    @ColumnInfo(name = Columns.STUDENT_DOB)
+//    val studentDoB: Date,
+//    @ColumnInfo(name = Columns.STUDENT_GENDER)
+//    val studentGender: String,
+//    @ColumnInfo(name = Columns.STUDENT_ADDRESS)
+//    val studentAddress: String,
+//    @ColumnInfo(name = Columns.STUDENT_PHONE_NUMBER)
+//    val studentPhoneNumber: String,
+//    @ColumnInfo(name = Columns.STUDENT_EMAIL)
+//    val studentEmail: String,
+//    @ColumnInfo(name = Columns.STUDENT_PARENT_NAME)
+//    val studentParentName: String,
+//    @ColumnInfo(name = Columns.STUDENT_PARENT_PHONE_NUMBER)
+//    val studentParentPhoneNumber: String,
+//    @ColumnInfo(name = Columns.STUDENT_ADMISSION_DATE)
+//    val studentAdmissionDate: Date, // Consider using Date or Long for date storage
+//    @ColumnInfo(name = Columns.STUDENT_IS_ACTIVE)
+//    val studentIsActive: Boolean //true, false
 ) : BaseEntity() {
 
     internal companion object {

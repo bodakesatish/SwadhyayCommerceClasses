@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_new_course"
         tools:listitem="@layout/list_row_course"/>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/btn_new_course"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

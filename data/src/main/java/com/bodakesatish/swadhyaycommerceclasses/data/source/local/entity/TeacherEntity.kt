@@ -16,27 +16,27 @@ data class TeacherEntity(
     @ColumnInfo(name = Columns.TEACHER_MIDDLE_NAME)
     val teacherMiddleName: String,
     @ColumnInfo(name = Columns.TEACHER_LAST_NAME)
-    val teacherLastName: String,
-    @ColumnInfo(name = Columns.TEACHER_DESIGNATION)
-    val teacherDesignation: String,
-    @ColumnInfo(name = Columns.TEACHER_QUALIFICATION)
-    val teacherQualification: String,
-    @ColumnInfo(name = Columns.TEACHER_DO_B)
-    val teacherDoB: Date,
-    @ColumnInfo(name = Columns.TEACHER_EXPERIENCE)
-    val teacherExperience: Int,
-    @ColumnInfo(name = Columns.TEACHER_GENDER)
-    val teacherGender: String,
-    @ColumnInfo(name = Columns.TEACHER_DATE_OF_JOINING)
-    val teacherDateOfJoining: Date,// Consider using Date or Long for date storage
-    @ColumnInfo(name = Columns.TEACHER_PHONE_NUMBER)
-    val teacherPhoneNumber: String,
-    @ColumnInfo(name = Columns.TEACHER_EMAIL)
-    val teacherEmail: String,
-    @ColumnInfo(name = Columns.TEACHER_SALARY)
-    val teacherSalary: Int,
-    @ColumnInfo(name = Columns.TEACHER_STATUS)
-    val teacherStatus: Boolean
+    val teacherLastName: String
+//    @ColumnInfo(name = Columns.TEACHER_DESIGNATION)
+//    val teacherDesignation: String,
+//    @ColumnInfo(name = Columns.TEACHER_QUALIFICATION)
+//    val teacherQualification: String,
+//    @ColumnInfo(name = Columns.TEACHER_DO_B)
+//    val teacherDoB: Date,
+//    @ColumnInfo(name = Columns.TEACHER_EXPERIENCE)
+//    val teacherExperience: Int,
+//    @ColumnInfo(name = Columns.TEACHER_GENDER)
+//    val teacherGender: String,
+//    @ColumnInfo(name = Columns.TEACHER_DATE_OF_JOINING)
+//    val teacherDateOfJoining: Date,// Consider using Date or Long for date storage
+//    @ColumnInfo(name = Columns.TEACHER_PHONE_NUMBER)
+//    val teacherPhoneNumber: String,
+//    @ColumnInfo(name = Columns.TEACHER_EMAIL)
+//    val teacherEmail: String,
+//    @ColumnInfo(name = Columns.TEACHER_SALARY)
+//    val teacherSalary: Int,
+//    @ColumnInfo(name = Columns.TEACHER_STATUS)
+//    val teacherStatus: Boolean
 ) : BaseEntity() {
 
     internal companion object {

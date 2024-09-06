@@ -20,12 +20,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="First Name (*)"
+            android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/header_generic">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -36,12 +38,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="Middle Name"
+            android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ev_first_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,12 +56,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="Last Name (*)"
+            android:maxLines="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ev_middle_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,6 +143,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="Address (*)"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ev_batch_time">
 
@@ -157,6 +164,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
+            android:visibility="gone"
             android:hint="Student Birth Date"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ev_student_address"
@@ -181,6 +189,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:hint="Student Gender"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ev_student_dob"
             app:placeholderText="Select Batch starting time">
@@ -203,6 +212,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
+            android:visibility="gone"
             android:hint="Student Phone Number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ev_student_gender"
@@ -223,6 +233,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:hint="Student Email"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ev_student_phone_number"
             app:placeholderText="Select Batch starting time">
@@ -242,6 +253,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:hint="Parent Name"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ev_student_email"
             app:placeholderText="Select Batch starting time">
@@ -261,6 +273,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:hint="Parent Name"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ev_student_email"
             app:placeholderText="Select Batch starting time">
@@ -280,6 +293,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:hint="Admission Date"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ev_parent_phone_number"
             app:placeholderText="Select Batch starting time">
@@ -294,16 +308,14 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <Button
             android:id="@+id/btn_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             android:text="Add Student"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ev_admission_date"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/ev_admission_date" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

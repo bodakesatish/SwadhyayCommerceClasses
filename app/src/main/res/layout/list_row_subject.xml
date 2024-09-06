@@ -36,6 +36,7 @@
         android:layout_marginStart="8dp"
         android:text="1450 Students enrolled"
         android:textSize="12sp"
+        android:visibility="gone"
         android:textColor="#000133"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_number"

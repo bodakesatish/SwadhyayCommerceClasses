@@ -40,10 +40,10 @@ data class BatchEntity(
     val subjectId: Int,
     @ColumnInfo(name = Columns.TEACHER_ID, index = true)
     val teacherId: Int,
-    @ColumnInfo(name = Columns.BATCH_NAME)
-    val batchName: String,
-    @ColumnInfo(name = Columns.BATCH_DESCRIPTION)
-    val batchDescription: String,
+//    @ColumnInfo(name = Columns.BATCH_NAME)
+//    val batchName: String,
+    @ColumnInfo(name = Columns.BATCH_TITLE)
+    val batchTitle: String,
     @ColumnInfo(name = Columns.BATCH_FEE)
     val batchFee: Int,
     @ColumnInfo(name = Columns.BATCH_START_DATE)
@@ -53,9 +53,9 @@ data class BatchEntity(
     @ColumnInfo(name = Columns.BATCH_START_TIME)
     val batchStartTime: Date,
     @ColumnInfo(name = Columns.BATCH_END_TIME)
-    val batchEndTime: Date,
-    @ColumnInfo(name = Columns.BATCH_STUDENT_MAX_STRENGTH)
-    val batchStudentMaxStrength: Int,
+    val batchEndTime: Date
+//    @ColumnInfo(name = Columns.BATCH_STUDENT_MAX_STRENGTH)
+//    val batchStudentMaxStrength: Int,
 ) : BaseEntity() {
 
     internal companion object {
@@ -76,7 +76,7 @@ data class BatchEntity(
 
         internal const val BATCH_NAME = "batchName"
 
-        internal const val BATCH_DESCRIPTION = "batchDescription"
+        internal const val BATCH_TITLE = "batchTitle"
 
         internal const val BATCH_FEE = "batchFee"
 

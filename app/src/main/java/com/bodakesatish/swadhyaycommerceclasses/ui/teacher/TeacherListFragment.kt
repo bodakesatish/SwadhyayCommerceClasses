@@ -35,28 +35,25 @@ class TeacherListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpHeader()
+
         initView()
 
+        initListeners()
+
+        initObservers()
+
+        fetchTeacherList()
+
+    }
+
+    private fun fetchTeacherList() {
         viewModel.getTeacherList()
+    }
 
-        viewModel.teacherResponse.observe(viewLifecycleOwner) { response ->
 
-            when (response) {
-                is Resource.Success -> {
-                    response.data?.let {
-                        teacherAdapter.setData(it)
-                    }
-                }
-                else -> {
-                    teacherAdapter.setData(emptyList())
-                }
-            }
-        }
-
-        binding?.btnNewTeacher?.setOnClickListener {
-            findNavController().navigate(R.id.add_teacher_dest)
-        }
-
+    private fun setUpHeader() {
+        binding?.headerGeneric?.tvHeader?.text = "Teacher List"
     }
 
     private fun initView() {
@@ -69,7 +66,35 @@ class TeacherListFragment : Fragment() {
                 DividerItemDecoration.VERTICAL
             )
         )
+    }
 
+    private fun initListeners() {
+
+        binding?.headerGeneric?.btnBack?.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding?.btnNewTeacher?.setOnClickListener {
+            findNavController().navigate(R.id.add_teacher_dest)
+        }
+
+    }
+
+    private fun initObservers() {
+        viewModel.teacherResponse.observe(viewLifecycleOwner) { response ->
+
+            when (response) {
+                is Resource.Success -> {
+                    response.data?.let {
+                        teacherAdapter.setData(it)
+                    }
+                }
+
+                else -> {
+                    teacherAdapter.setData(emptyList())
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {

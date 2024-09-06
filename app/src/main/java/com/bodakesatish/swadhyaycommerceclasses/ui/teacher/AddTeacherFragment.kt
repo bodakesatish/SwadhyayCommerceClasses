@@ -6,13 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.bodakesatish.swadhyaycommerceclasses.R
+import androidx.navigation.fragment.findNavController
 import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentAddTeacherBinding
-import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentAdminDashboardBinding
-import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentBatchListBinding
-import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentCourseListBinding
-import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentLoginBinding
-import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentTeacherListBinding
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Teacher
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Date
@@ -34,28 +29,49 @@ class AddTeacherFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpHeader()
+        initListeners()
+        initObservers()
+
+    }
+
+    private fun setUpHeader() {
+        binding?.headerGeneric?.tvHeader?.text = "Add Teacher"
+    }
+
+    private fun initListeners() {
+
+        binding?.headerGeneric?.btnBack?.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         binding?.btnAdd?.setOnClickListener {
             viewModel.addTeacher(
                 Teacher(
                     0,
-                    binding?.evFirstName?.text.toString(),
-                    binding?.evMiddleName?.text.toString(),
-                    binding?.evLastName?.text.toString(),
-                    binding?.evTeacherDesignation?.text.toString(),
-                    binding?.evTeacherQualification?.text.toString(),
-                    Date(),
-                    binding?.evTeacherExperience?.text.toString().toInt(),
-                    binding?.evTeacherGender?.text.toString(),
-                    Date(),
-                    binding?.evPhoneNumber?.text.toString(),
-                    binding?.evEmail?.text.toString(),
-                    binding?.evSalary?.text.toString().toInt(),
-                    true//binding?.evStatus?.text.toString()
+                    binding?.evFirstName?.editText?.text.toString(),
+                    binding?.evMiddleName?.editText?.text.toString(),
+                    binding?.evLastName?.editText?.text.toString()
+//                    binding?.evTeacherDesignation?.text.toString(),
+//                    binding?.evTeacherQualification?.text.toString(),
+//                    Date(),
+//                    binding?.evTeacherExperience?.text.toString().toInt(),
+//                    binding?.evTeacherGender?.text.toString(),
+//                    Date(),
+//                    binding?.evPhoneNumber?.text.toString(),
+//                    binding?.evEmail?.text.toString(),
+//                    binding?.evSalary?.text.toString().toInt(),
+//                    true//binding?.evStatus?.text.toString()
                 )
             )
         }
 
     }
 
+    private fun initObservers() {
+        viewModel.addTeacherResponse.observe(viewLifecycleOwner) {
+            findNavController().popBackStack()
+        }
+    }
 
-}
+    }

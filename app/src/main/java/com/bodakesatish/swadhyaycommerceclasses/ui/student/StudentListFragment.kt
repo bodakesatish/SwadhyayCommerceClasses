@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bodakesatish.swadhyaycommerceclasses.R
 import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentStudentListBinding
+import com.bodakesatish.swadhyaycommerceclasses.ui.course.CourseListFragmentDirections
 import com.bodakesatish.swadhyaycommerceclasses.ui.student.adapter.StudentAdapter
 import com.bodakesatish.swadhyaycommerceclasses.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -66,6 +67,9 @@ class StudentListFragment : Fragment() {
         binding?.headerGeneric?.btnBack?.setOnClickListener {
             findNavController().popBackStack()
         }
+        studentAdapter.setOnClickListener {
+            val action = StudentListFragmentDirections.actionFragmentStudentListToFragmentAddStudent(student = it)
+            findNavController().navigate(action)        }
     }
 
     private fun initHeader() {

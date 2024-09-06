@@ -18,7 +18,7 @@ interface BatchDao : BaseDao<BatchEntity> {
     fun getAllBatches(): List<BatchEntity>
 
     @Query("SELECT * FROM ${BatchEntity.TABLE_NAME} WHERE ${BatchEntity.Columns.BATCH_ID} = :batchId")
-    fun getBatchById(batchId: Int): BatchEntity?
+    fun getBatchById(batchId: Int): BatchEntity
 
     @Query("SELECT * FROM ${BatchEntity.TABLE_NAME} WHERE ${BatchEntity.Columns.COURSE_ID} = :courseId")
     fun getAllBatchesByCourse(courseId: Int): List<BatchEntity>
@@ -27,7 +27,7 @@ interface BatchDao : BaseDao<BatchEntity> {
     fun addBatch(batch: BatchEntity)
 
     @Query("""
-        SELECT b.batchId, b.courseId, c.courseName, b.subjectId, s.subjectName, b.teacherId, t.teacherFirstName as teacherName, b.batchDescription, b.batchFee, b.batchStartDate, b.batchEndDate, b.batchStartTime, b.batchEndTime, b.batchStudentMaxStrength FROM ${BatchEntity.TABLE_NAME} b JOIN ${CourseEntity.TABLE_NAME} c ON b.${BatchEntity.Columns.COURSE_ID} = c.${CourseEntity.Columns.COURSE_ID} JOIN ${SubjectEntity.TABLE_NAME} s ON b.${BatchEntity.Columns.SUBJECT_ID} = s.${SubjectEntity.Columns.SUBJECT_ID} JOIN ${TeacherEntity.TABLE_NAME} t ON b.${BatchEntity.Columns.TEACHER_ID} = t.${TeacherEntity.Columns.TEACHER_ID}
+        SELECT b.batchId, b.courseId, c.courseName, b.subjectId, s.subjectName, b.teacherId, t.teacherFirstName as teacherName, b.batchTitle, b.batchFee, b.batchStartDate, b.batchEndDate, b.batchStartTime, b.batchEndTime FROM ${BatchEntity.TABLE_NAME} b JOIN ${CourseEntity.TABLE_NAME} c ON b.${BatchEntity.Columns.COURSE_ID} = c.${CourseEntity.Columns.COURSE_ID} JOIN ${SubjectEntity.TABLE_NAME} s ON b.${BatchEntity.Columns.SUBJECT_ID} = s.${SubjectEntity.Columns.SUBJECT_ID} JOIN ${TeacherEntity.TABLE_NAME} t ON b.${BatchEntity.Columns.TEACHER_ID} = t.${TeacherEntity.Columns.TEACHER_ID}
         """)
     fun getBatchList() : List<BatchDetailEntity>
 

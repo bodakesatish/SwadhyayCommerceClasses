@@ -14,17 +14,17 @@ data class CourseEntity(
     @ColumnInfo(name = Columns.COURSE_ID)
     val courseId: Int = 0,
     @ColumnInfo(name = Columns.COURSE_NAME)
-    val courseName: String,
-    @ColumnInfo(name = Columns.COURSE_DURATION)
-    val courseDuration: String,
-    @ColumnInfo(name = Columns.COURSE_FEE)
-    val courseFee: Int,
-    @ColumnInfo(name = Columns.COURSE_DESCRIPTION)
-    val courseDescription: String,
-    @ColumnInfo(name = Columns.COURSE_START_DATE)
-    val courseStartDate: Date,
-    @ColumnInfo(name = Columns.COURSE_END_DATE)
-    val courseEndDate: Date
+    val courseName: String
+//    @ColumnInfo(name = Columns.COURSE_DURATION)
+//    val courseDuration: String,
+//    @ColumnInfo(name = Columns.COURSE_FEE)
+//    val courseFee: Int,
+//    @ColumnInfo(name = Columns.COURSE_DESCRIPTION)
+//    val courseDescription: String,
+//    @ColumnInfo(name = Columns.COURSE_START_DATE)
+//    val courseStartDate: Date,
+//    @ColumnInfo(name = Columns.COURSE_END_DATE)
+//    val courseEndDate: Date
 ) : BaseEntity() {
 
     internal companion object {

@@ -12,11 +12,11 @@ data class BatchDetail(
     val subjectName: String,
     val teacherId: Int,
     val teacherName: String,
-    val batchDescription: String,
+    val batchTitle: String,
     val batchFee: Int,
     val batchStartDate: Date,
     val batchEndDate: Date,
     val batchStartTime: Date,
-    val batchEndTime: Date,
-    val batchStudentMaxStrength: Int
+    val batchEndTime: Date
+//    val batchStudentMaxStrength: Int
 ): Serializable, BaseResponse

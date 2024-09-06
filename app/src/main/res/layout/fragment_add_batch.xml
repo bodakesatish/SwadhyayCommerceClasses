@@ -205,12 +205,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ev_batch_description"
+            android:id="@+id/ev_batch_title"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:hint="Batch Description (Optional)"
+            android:hint="Batch Title (Optional)"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ev_batch_fee"
             app:placeholderText="Batch Description">
@@ -221,7 +221,7 @@
                 android:focusable="true"
                 android:inputType="text"
                 android:maxLines="1"
-                android:text="First Year Commerce Description" />
+                android:text="" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -231,9 +231,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:visibility="gone"
             android:hint="Current Student Count"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ev_batch_description"
+            app:layout_constraintTop_toBottomOf="@+id/ev_batch_title"
             app:placeholderText="Batch Description">
 
             <com.google.android.material.textfield.TextInputEditText

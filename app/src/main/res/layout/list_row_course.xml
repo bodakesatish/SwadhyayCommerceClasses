@@ -37,6 +37,7 @@
         android:text="1450 Students enrolled"
         android:textSize="12sp"
         android:textColor="#000133"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_number"
         app:layout_constraintTop_toBottomOf="@+id/tv_course_name" />

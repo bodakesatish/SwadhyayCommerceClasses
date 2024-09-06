@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bodakesatish.swadhyaycommerceclasses.R
 import com.bodakesatish.swadhyaycommerceclasses.common.Constants
-import com.bodakesatish.swadhyaycommerceclasses.common.DateHelper
+import com.bodakesatish.swadhyaycommerceclasses.data.common.DateHelper
 import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentAddCourseBinding
 import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentAdminDashboardBinding
 import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentCourseListBinding
@@ -52,14 +52,13 @@ class AddCourseFragment : Fragment() {
                     .show()
             } else {
                 viewModel.addCourse(
-                    Course(
-                        0,
-                        binding?.evCourseName?.editText?.text.toString(),
-                        binding?.evCourseDuration?.editText?.text.toString(),
-                        0,
-                        binding?.evCourseDescription?.editText?.text.toString(),
-                        Date(),
-                        Date()
+                    Course(0,
+                        binding?.evCourseName?.editText?.text.toString()
+//                        binding?.evCourseDuration?.editText?.text.toString(),
+//                        0,
+//                        binding?.evCourseDescription?.editText?.text.toString(),
+//                        Date(),
+//                        Date()
                     )
                 )
             }
@@ -83,27 +82,29 @@ class AddCourseFragment : Fragment() {
         viewModel.courseResponse.observe(viewLifecycleOwner) {
             course.courseId = it.data.toString().toInt()
             Toast.makeText(requireContext(), "Course Id : ${course.courseId} added successfully", Toast.LENGTH_SHORT).show()
+            val action = AddCourseFragmentDirections.actionAddCourseToSubjectList(course)
+            findNavController().navigate(action)
         }
 
     }
 
     private fun initData() {
-        course = Course(0, "", "", 0, "", Date(), Date())
+        course = Course()
         binding?.evCourseName?.editText?.setText(course.courseName)
-        binding?.evCourseDescription?.editText?.setText(course.courseDescription)
-        binding?.evCourseDuration?.editText?.setText(course.courseDuration)
-        binding?.evCourseStartDate?.editText?.setText(
-            DateHelper.getFormattedDate(
-                course.courseStartDate,
-                DateHelper.DATE_FORMAT_dd_MMM_yyyy
-            )
-        )
-        binding?.evCourseEndDate?.editText?.setText(
-            DateHelper.getFormattedDate(
-                course.courseEndDate,
-                DateHelper.DATE_FORMAT_dd_MMM_yyyy
-            )
-        )
+//        binding?.evCourseDescription?.editText?.setText(course.courseDescription)
+//        binding?.evCourseDuration?.editText?.setText(course.courseDuration)
+//        binding?.evCourseStartDate?.editText?.setText(
+//            DateHelper.getFormattedDate(
+//                course.courseStartDate,
+//                DateHelper.DATE_FORMAT_dd_MMM_yyyy
+//            )
+//        )
+//        binding?.evCourseEndDate?.editText?.setText(
+//            DateHelper.getFormattedDate(
+//                course.courseEndDate,
+//                DateHelper.DATE_FORMAT_dd_MMM_yyyy
+//            )
+//        )
     }
 
     private fun setUpHeader() {
@@ -113,14 +114,14 @@ class AddCourseFragment : Fragment() {
     private fun courseStartDatePicker() {
         val datePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText("Select date")
-            .setSelection(course.courseStartDate.time)
+//            .setSelection(course.courseStartDate.time)
             .build()
 
         datePicker.show(childFragmentManager, "")
         datePicker.addOnPositiveButtonClickListener { selection ->
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = selection
-            course.courseStartDate = calendar.time
+//            course.courseStartDate = calendar.time
             val formattedDate =
                 DateHelper.getFormattedDate(calendar.time, DateHelper.DATE_FORMAT_dd_MMM_yyyy)
 
@@ -133,14 +134,14 @@ class AddCourseFragment : Fragment() {
     private fun courseEndDatePicker() {
         val datePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText("Select date")
-            .setSelection(course.courseEndDate.time)
+//            .setSelection(course.courseEndDate.time)
             .build()
 
         datePicker.show(childFragmentManager, "")
         datePicker.addOnPositiveButtonClickListener { selection ->
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = selection
-            course.courseEndDate = calendar.time
+//            course.courseEndDate = calendar.time
             val formattedDate =
                 DateHelper.getFormattedDate(calendar.time, DateHelper.DATE_FORMAT_dd_MMM_yyyy)
             Toast.makeText(requireContext(), "Selected Date: $formattedDate", Toast.LENGTH_SHORT)

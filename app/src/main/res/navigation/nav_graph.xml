@@ -18,7 +18,11 @@
     <fragment
         android:id="@+id/batch_list_dest"
         android:name="com.bodakesatish.swadhyaycommerceclasses.ui.batch.BatchListFragment"
-        tools:layout="@layout/fragment_batch_list" />
+        tools:layout="@layout/fragment_batch_list" >
+        <action
+            android:id="@+id/action_fragment_batch_list_to_fragment_batch_timing"
+            app:destination="@+id/batch_time_table_dest"/>
+    </fragment>
 
     <fragment
         android:id="@+id/add_batch_dest"
@@ -48,7 +52,13 @@
     <fragment
         android:id="@+id/add_course_dest"
         android:name="com.bodakesatish.swadhyaycommerceclasses.ui.course.AddCourseFragment"
-        tools:layout="@layout/fragment_add_course" />
+        tools:layout="@layout/fragment_add_course" >
+        <action
+            android:id="@+id/action_add_course_to_subject_list"
+            app:destination="@id/subject_list_dest"
+            app:popUpTo="@id/course_list_dest"
+            app:popUpToInclusive="false" />
+    </fragment>
 
     <fragment
         android:id="@+id/exam_list_dest"
@@ -68,12 +78,24 @@
     <fragment
         android:id="@+id/add_student_dest"
         android:name="com.bodakesatish.swadhyaycommerceclasses.ui.student.AddStudentFragment"
-        tools:layout="@layout/fragment_add_student" />
+        tools:layout="@layout/fragment_add_student" >
+        <argument
+            android:name="student"
+            app:argType="com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Student"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+    </fragment>
 
     <fragment
         android:id="@+id/student_list_dest"
         android:name="com.bodakesatish.swadhyaycommerceclasses.ui.student.StudentListFragment"
-        tools:layout="@layout/fragment_student_list" />
+        tools:layout="@layout/fragment_student_list" >
+
+        <action
+            android:id="@+id/action_fragment_student_list_to_fragment_add_student"
+            app:destination="@+id/add_student_dest"/>
+
+    </fragment>
 
     <fragment
         android:id="@+id/student_attendance_dest"
@@ -99,5 +121,16 @@
         android:id="@+id/fees_dest"
         android:name="com.bodakesatish.swadhyaycommerceclasses.ui.fees.FeesFragment"
         tools:layout="@layout/fragment_fees" />
+
+    <fragment
+        android:id="@+id/batch_time_table_dest"
+        android:name="com.bodakesatish.swadhyaycommerceclasses.ui.batch.BatchTimeTableFragment"
+        tools:layout="@layout/fragment_batch_time_table_list" >
+        <argument
+            android:name="batchDetail"
+            app:argType="com.bodakesatish.swadhyaycommerceclasses.domain.model.response.BatchDetail"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+    </fragment>
 
 </navigation>

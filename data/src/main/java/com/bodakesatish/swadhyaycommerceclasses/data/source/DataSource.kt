@@ -3,6 +3,7 @@ package com.bodakesatish.swadhyaycommerceclasses.data.source
 import com.bodakesatish.swadhyaycommerceclasses.data.source.base.BaseOutput
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Batch
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.BatchDetail
+import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.BatchTimeTable
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Course
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Student
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Subject
@@ -12,7 +13,11 @@ import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.AddCourseUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.AddStudentUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.AddSubjectUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.AddTeacherUseCase
+import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.CreateBatchTimeTableUseCase
+import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.DeleteStudentUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.FilteredBatchListUseCase
+import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.GetBatchTimeTableUseCase
+import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.GetStudentByIdUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.LoginUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.SubjectListUseCase
 
@@ -37,6 +42,8 @@ class DataSource {
         suspend fun addBatch(request: AddBatchUseCase.Request): BaseOutput<Boolean>
         suspend fun getBatchList(): BaseOutput<List<BatchDetail>>
         suspend fun getFilteredBatchList(request: FilteredBatchListUseCase.Request): BaseOutput<List<Batch>>
+        suspend fun createBatchTimeTable(request: CreateBatchTimeTableUseCase.Request): BaseOutput<Boolean>
+        suspend fun getBatchTimeTable(request: GetBatchTimeTableUseCase.Request): BaseOutput<List<BatchTimeTable>>
     }
 
     interface TeacherDataSource {
@@ -46,7 +53,9 @@ class DataSource {
 
     interface StudentDataSource {
         suspend fun getAllStudents(): BaseOutput<List<Student>>
-        suspend fun addStudent(request: AddStudentUseCase.Request): BaseOutput<Boolean>
+        suspend fun getStudentNyId(request: GetStudentByIdUseCase.Request): BaseOutput<Student>
+        suspend fun addOrUpdateStudent(request: AddStudentUseCase.Request): BaseOutput<Boolean>
+        suspend fun deleteStudent(request: DeleteStudentUseCase.Request): BaseOutput<Boolean>
     }
 
 }

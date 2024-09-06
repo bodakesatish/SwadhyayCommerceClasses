@@ -13,24 +13,24 @@ class CourseEntityLocalMapper
     override fun reverse(model: Course): CourseEntity {
         return CourseEntity(
             courseId = model.courseId,
-            courseName = model.courseName,
-            courseDuration = model.courseDuration,
-            courseFee = model.courseFee,
-            courseDescription = model.courseDescription,
-            courseStartDate = model.courseStartDate,
-            courseEndDate = model.courseEndDate
+            courseName = model.courseName
+//            courseDuration = model.courseDuration,
+//            courseFee = model.courseFee,
+//            courseDescription = model.courseDescription,
+//            courseStartDate = model.courseStartDate,
+//            courseEndDate = model.courseEndDate
         )
     }
 
     override fun map(entity: CourseEntity): Course {
         return Course(
             courseId = entity.courseId,
-            courseName = entity.courseName,
-            courseDuration = entity.courseDuration,
-            courseFee = entity.courseFee,
-            courseDescription = entity.courseDescription,
-            courseStartDate = entity.courseStartDate,
-            courseEndDate = entity.courseEndDate
+            courseName = entity.courseName
+//            courseDuration = entity.courseDuration,
+//            courseFee = entity.courseFee,
+//            courseDescription = entity.courseDescription,
+//            courseStartDate = entity.courseStartDate,
+//            courseEndDate = entity.courseEndDate
         )
     }
 

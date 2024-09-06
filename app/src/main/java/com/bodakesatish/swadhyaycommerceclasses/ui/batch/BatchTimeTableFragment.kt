@@ -7,39 +7,47 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bodakesatish.swadhyaycommerceclasses.R
 import com.bodakesatish.swadhyaycommerceclasses.common.Constants
 import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentBatchListBinding
+import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentBatchTimeTableListBinding
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Batch
+import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.BatchDetail
 import com.bodakesatish.swadhyaycommerceclasses.ui.batch.adapter.BatchAdapter
-import com.bodakesatish.swadhyaycommerceclasses.ui.student.StudentListFragmentDirections
+import com.bodakesatish.swadhyaycommerceclasses.ui.batch.adapter.BatchTimingAdapter
+import com.bodakesatish.swadhyaycommerceclasses.ui.student.AddStudentFragmentArgs
 import com.bodakesatish.swadhyaycommerceclasses.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BatchListFragment : Fragment() {
+class BatchTimeTableFragment : Fragment() {
 
-    private var binding: FragmentBatchListBinding? = null
-    private val viewModel: BatchListViewModel by viewModels()
+    private var binding: FragmentBatchTimeTableListBinding? = null
+    private val viewModel: BatchTimeTableListViewModel by viewModels()
 
-    private var batchAdapter: BatchAdapter = BatchAdapter()
-    private var courseId: Int = 0
+    private var batchAdapter: BatchTimingAdapter = BatchTimingAdapter()
+    private lateinit var batchDetail: BatchDetail
+
+    val args: BatchTimeTableFragmentArgs by navArgs()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentBatchListBinding.inflate(inflater, container, false)
+        binding = FragmentBatchTimeTableListBinding.inflate(inflater, container, false)
+        args.batchDetail?.let {
+            batchDetail = it
+        }
         return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        courseId = arguments?.getInt(Constants.COURSE_ID, 0) ?: 0
 
         initHeader()
 
@@ -51,6 +59,12 @@ class BatchListFragment : Fragment() {
 
         initData()
 
+        fetchBatchTimeTable()
+
+    }
+
+    private fun fetchBatchTimeTable() {
+        viewModel.getBatchTimeTableList(batchDetail.batchId)
     }
 
     private fun initHeader() {
@@ -58,7 +72,7 @@ class BatchListFragment : Fragment() {
     }
 
     private fun initData() {
-        viewModel.getBatchList()
+       // viewModel.getBatchTimeTableList()
     }
 
     private fun initObservers() {
@@ -80,15 +94,11 @@ class BatchListFragment : Fragment() {
 
     private fun initListeners() {
         binding?.btnNewBatch?.setOnClickListener {
-            findNavController().navigate(R.id.add_batch_dest)
+            viewModel.createBatchTimeTableList(batchDetail.batchId)
         }
 
         binding?.headerGeneric?.btnBack?.setOnClickListener {
             findNavController().popBackStack()
-        }
-        batchAdapter.setOnClickListener {
-            val action = BatchListFragmentDirections.actionFragmentBatchListToFragmentBatchTiming(batchDetail = it)
-            findNavController().navigate(action)
         }
     }
 

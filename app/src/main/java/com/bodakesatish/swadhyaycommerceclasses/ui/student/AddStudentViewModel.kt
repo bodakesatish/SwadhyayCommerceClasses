@@ -13,6 +13,7 @@ import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Student
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Subject
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.AddStudentUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.CourseListUseCase
+import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.DeleteStudentUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.FilteredBatchListUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.SubjectListUseCase
 import com.bodakesatish.swadhyaycommerceclasses.util.Resource
@@ -26,7 +27,8 @@ class AddStudentViewModel @Inject constructor(
     private val addStudentUseCase: AddStudentUseCase,
     private val courseListUseCase: CourseListUseCase,
     private val subjectUseCase: SubjectListUseCase,
-    private val filterBatchListUseCase: FilteredBatchListUseCase
+    private val filterBatchListUseCase: FilteredBatchListUseCase,
+    private val deleteStudentUseCase: DeleteStudentUseCase
 ) : ViewModel() {
 
     private val tag = "AddStudentViewModel"
@@ -45,7 +47,10 @@ class AddStudentViewModel @Inject constructor(
 
     val filteredBatchListResponse = MutableLiveData<Resource<List<Batch>>>()
 
-    fun addStudent(student: Student) {
+    private val _deleteStudentResponse = MutableLiveData<Resource<Boolean>>()
+    val deleteStudentResponse : LiveData<Resource<Boolean>> = _deleteStudentResponse
+
+    fun addOrUpdateStudent(student: Student) {
         Log.i(tag,"addStudent")
         viewModelScope.launch(Dispatchers.IO) {
             val request = AddStudentUseCase.Request()
@@ -59,6 +64,26 @@ class AddStudentViewModel @Inject constructor(
                     }
                     else -> {
                         Log.i(tag,"addStudent else")
+                    }
+                }
+            }
+        }
+    }
+
+    fun deleteStudent(student: Student) {
+        Log.i(tag,"deleteStudent")
+        viewModelScope.launch(Dispatchers.IO) {
+            val request = DeleteStudentUseCase.Request()
+            request.setRequestModel(student)
+            val response = deleteStudentUseCase.executeUseCase(request)
+            viewModelScope.launch(Dispatchers.Main) {
+                when(response.getResponseCode()) {
+                    is ResponseCode.Success -> {
+                        _deleteStudentResponse.postValue(Resource.Success(response.getData()!!))
+                        Log.i(tag,"deleteStudent Success")
+                    }
+                    else -> {
+                        Log.i(tag,"deleteStudent else")
                     }
                 }
             }

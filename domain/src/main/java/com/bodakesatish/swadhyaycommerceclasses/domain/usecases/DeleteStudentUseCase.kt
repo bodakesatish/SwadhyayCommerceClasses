@@ -5,10 +5,10 @@ import com.bodakesatish.swadhyaycommerceclasses.domain.repository.StudentReposit
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.base.BaseUseCase
 import javax.inject.Inject
 
-class AddStudentUseCase @Inject constructor(val repository: StudentRepository): BaseUseCase<AddStudentUseCase.Request, AddStudentUseCase.Response, Student, Boolean>()
+class DeleteStudentUseCase @Inject constructor(val repository: StudentRepository): BaseUseCase<DeleteStudentUseCase.Request, DeleteStudentUseCase.Response, Student, Boolean>()
 {
     override suspend fun buildUseCase(request: Request): Response {
-        return repository.addOrUpdateStudent(request)
+        return repository.deleteStudent(request)
     }
 
     class Request : BaseUseCase.Request<Student>()

@@ -4,18 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.ListPopupWindow
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
-import com.bodakesatish.swadhyaycommerceclasses.R
-import com.bodakesatish.swadhyaycommerceclasses.common.Constants
-import com.bodakesatish.swadhyaycommerceclasses.common.DateHelper
+import com.bodakesatish.swadhyaycommerceclasses.data.common.DateHelper
 import com.bodakesatish.swadhyaycommerceclasses.databinding.FragmentAddBatchBinding
 import com.bodakesatish.swadhyaycommerceclasses.databinding.ItemLayoutBinding
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Batch
@@ -27,13 +21,8 @@ import com.bodakesatish.swadhyaycommerceclasses.util.AppDatePicker
 import com.bodakesatish.swadhyaycommerceclasses.util.AppListPopupWindow
 import com.bodakesatish.swadhyaycommerceclasses.util.AppTimePicker
 import com.bodakesatish.swadhyaycommerceclasses.util.Resource
-import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.TimeFormat
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.Calendar
-import java.util.Date
 
 @AndroidEntryPoint
 class AddBatchFragment : Fragment() {
@@ -65,7 +54,7 @@ class AddBatchFragment : Fragment() {
     }
 
     private fun initData() {
-        batch = Batch(0, 0, 0, 0,"", "", 0, Date(), Date(), Date(), Date(), 0)
+        batch = Batch()
         viewModel.getCourseList()
         viewModel.getTeacherList()
     }
@@ -101,7 +90,7 @@ class AddBatchFragment : Fragment() {
         }
 
         binding?.btnAdd?.setOnClickListener {
-            batch.batchDescription = binding?.evBatchDescription?.editText?.text.toString()
+            batch.batchTitle = binding?.evBatchTitle?.editText?.text.toString()
             viewModel.addBatch(batch)
         }
 
@@ -273,7 +262,7 @@ class AddBatchFragment : Fragment() {
             batch.batchStartDate,
             "Select Batch Start Date",
         ) { selectedDate, formattedDate -> // Handle the selected time here
-            batch.batchStartDate = selectedDate.time
+            batch.batchStartDate = DateHelper.formatDate(selectedDate.time)
             binding?.evBatchStartDate?.editText?.setText(formattedDate)
         }
 
@@ -287,7 +276,7 @@ class AddBatchFragment : Fragment() {
             batch.batchStartDate,
             "Select Batch End Date",
         ) { selectedDate, formattedDate -> // Handle the selected time here
-            batch.batchEndDate = selectedDate.time
+            batch.batchEndDate = DateHelper.formatDate(selectedDate.time)
             binding?.evBatchEndDate?.editText?.setText(formattedDate)
         }
 

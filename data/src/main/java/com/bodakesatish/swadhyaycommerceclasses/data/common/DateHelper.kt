@@ -1,4 +1,4 @@
-package com.bodakesatish.swadhyaycommerceclasses.common
+package com.bodakesatish.swadhyaycommerceclasses.data.common
 
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -30,6 +30,21 @@ object DateHelper {
         val amPm = if (hour < 12) "AM" else "PM"
         val hourIn12HourFormat = (hour % 12).let { if (it == 0) 12 else it }
         return String.format("%02d:%02d %s", hourIn12HourFormat, minute, amPm)
+    }
+
+    fun formatDate(date: Date): Date {
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
+        return calendar.time
+    }
+
+    fun getDayOfWeek(currentDate: Date): String {
+        val simpleDateFormat = SimpleDateFormat("EEEE", Locale.getDefault())
+        return simpleDateFormat.format(currentDate)
     }
 
 

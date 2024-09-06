@@ -3,8 +3,10 @@ package com.bodakesatish.swadhyaycommerceclasses.data.source.local.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.bodakesatish.swadhyaycommerceclasses.data.source.local.convertors.BooleanConverter
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.convertors.DateConverter
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.BatchDao
+import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.BatchTimeTableDao
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.CourseDao
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.ExamDao
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.LoginDao
@@ -17,6 +19,7 @@ import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.TeacherAtt
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.TeacherBatchDao
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.dao.TeacherDao
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.entity.BatchEntity
+import com.bodakesatish.swadhyaycommerceclasses.data.source.local.entity.BatchTimeTableEntity
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.entity.CourseEntity
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.entity.ExamEntity
 import com.bodakesatish.swadhyaycommerceclasses.data.source.local.entity.LoginEntity
@@ -43,12 +46,13 @@ import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Student
         TeacherAttendanceEntity::class,
         TeacherBatchEntity::class,
         TeacherEntity::class,
-        SubjectEntity::class
+        SubjectEntity::class,
+        BatchTimeTableEntity::class
     ],
     version = 1,
     exportSchema = false
 )
-@TypeConverters(DateConverter::class)
+@TypeConverters(DateConverter::class, BooleanConverter::class)
 abstract class SccDatabase : RoomDatabase() {
     abstract fun loginDao(): LoginDao
     abstract fun courseDao(): CourseDao
@@ -62,4 +66,5 @@ abstract class SccDatabase : RoomDatabase() {
     abstract fun teacherBatchDao(): TeacherBatchDao
     abstract fun teacherDao(): TeacherDao
     abstract fun subjectDao(): SubjectDao
+    abstract fun batchTimeTableDao(): BatchTimeTableDao
 }

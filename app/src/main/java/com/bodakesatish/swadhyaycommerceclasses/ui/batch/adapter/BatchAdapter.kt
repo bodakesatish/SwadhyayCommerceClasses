@@ -3,7 +3,7 @@ package com.bodakesatish.swadhyaycommerceclasses.ui.batch.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bodakesatish.swadhyaycommerceclasses.common.DateHelper
+import com.bodakesatish.swadhyaycommerceclasses.data.common.DateHelper
 import com.bodakesatish.swadhyaycommerceclasses.databinding.ListRowBatchBinding
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Batch
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.BatchDetail
