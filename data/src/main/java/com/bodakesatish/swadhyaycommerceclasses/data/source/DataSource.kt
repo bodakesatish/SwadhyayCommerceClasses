@@ -1,5 +1,6 @@
 package com.bodakesatish.swadhyaycommerceclasses.data.source
 
+import androidx.paging.PagingData
 import com.bodakesatish.swadhyaycommerceclasses.data.source.base.BaseOutput
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.Batch
 import com.bodakesatish.swadhyaycommerceclasses.domain.model.response.BatchDetail
@@ -20,6 +21,7 @@ import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.GetBatchTimeTabl
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.GetStudentByIdUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.LoginUseCase
 import com.bodakesatish.swadhyaycommerceclasses.domain.usecases.SubjectListUseCase
+import kotlinx.coroutines.flow.Flow
 
 class DataSource {
 
@@ -28,8 +30,9 @@ class DataSource {
     }
 
     interface CourseDataSource {
-        suspend fun getAllCourses(): BaseOutput<List<Course>>
+        suspend fun getAllCourses(): BaseOutput<Flow<List<Course>>>
         suspend fun addCourse(request: AddCourseUseCase.Request): BaseOutput<Long>
+        suspend fun getPagedCourses(): BaseOutput<Flow<PagingData<Course>>>
     }
 
     interface SubjectDataSource {

@@ -65,6 +65,8 @@ dependencies {
 
 //    implementation(libs.androidx.security.crypto.ktx)
 
+    //Paging
+    implementation(libs.paging)
 
     // Hilt
     implementation(libs.hilt.android.core)

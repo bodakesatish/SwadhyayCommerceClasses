@@ -98,7 +98,7 @@ class AddStudentViewModel @Inject constructor(
                 when(response.getResponseCode()) {
                     is ResponseCode.Success -> {
                         Log.i(tag , "getCourseList Success")
-                        courseResponse.postValue(Resource.Success(response.getData()!!))
+//                        courseResponse.postValue(Resource.Success(response.getData()!!))
                     }
                     else -> {
                         Log.i(tag , "getCourseList else")

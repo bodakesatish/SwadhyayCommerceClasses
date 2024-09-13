@@ -82,8 +82,8 @@ class AddCourseFragment : Fragment() {
         viewModel.courseResponse.observe(viewLifecycleOwner) {
             course.courseId = it.data.toString().toInt()
             Toast.makeText(requireContext(), "Course Id : ${course.courseId} added successfully", Toast.LENGTH_SHORT).show()
-            val action = AddCourseFragmentDirections.actionAddCourseToSubjectList(course)
-            findNavController().navigate(action)
+            //val action = AddCourseFragmentDirections.actionAddCourseToSubjectList(course)
+            //findNavController().navigate(action)
         }
 
     }

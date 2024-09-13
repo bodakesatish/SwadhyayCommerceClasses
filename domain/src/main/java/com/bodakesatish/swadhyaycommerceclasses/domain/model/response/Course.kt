@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 data class Course (
     var courseId: Int= 0,
-    val courseName: String = "",
+    var courseName: String = "",
 //    val courseDuration: String,
 //    val courseFee: Int,
 //    val courseDescription: String,

@@ -48,6 +48,9 @@ dependencies {
 
     implementation(libs.kotlinx.coroutines.android)
 
+    //Paging
+    implementation(libs.paging)
+
     // Architecture Components
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)

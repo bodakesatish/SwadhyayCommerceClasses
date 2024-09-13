@@ -89,7 +89,7 @@ class AddBatchViewModel @Inject constructor(
                 when(response.getResponseCode()) {
                     is ResponseCode.Success -> {
                         Log.i("AddBatchViewModel" , "getCourseList Success")
-                        courseResponse.postValue(Resource.Success(response.getData()!!))
+                     //   courseResponse.postValue(Resource.Success(response.getData()!!))
                     }
                     else -> {
                         Log.i("AddBatchViewModel" , "getCourseList else")

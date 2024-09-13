@@ -43,6 +43,9 @@ dependencies {
     implementation(libs.hilt.android.core)
     kapt(libs.hilt.compiler)
 
+    //Paging
+    implementation(libs.paging)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
